@@ -1,4 +1,3 @@
-<!-- top-area Start -->
 <div class="top-area">
     <div class="header-area">
         <!-- Start Navigation -->
@@ -32,12 +31,20 @@
                     id="navbar-menu"
                 >
                     <ul
+                        *ngIf="isLoggedIn"
                         class="nav navbar-nav navbar-right"
                         data-in="fadeInDown"
                         data-out="fadeOutUp"
                     >
                         <li class="scroll active">
                             <a href="#home">home</a>
+                        </li>
+                        <li class="scroll active">
+                            <a href="#home">login</a>
+                        </li>
+
+                        <li class="scroll active">
+                            <a href="#home">register</a>
                         </li>
                         <li class="scroll">
                             <a href="#service">service</a>
@@ -55,8 +62,19 @@
                             <a href="#contact">contact</a>
                         </li>
                     </ul>
+                    <ul
+                        *ngIf="!isLoggedIn"
+                        class="nav navbar-nav navbar-right"
+                        data-in="fadeInDown"
+                        data-out="fadeOutUp"
+                    >
+                        <li class="scroll">
+                            <a href="#contact">login</a>
+                        </li>
+                    </ul>
                     <!--/.nav -->
                 </div>
+
                 <!-- /.navbar-collapse -->
             </div>
             <!--/.container-->
@@ -67,5 +85,3 @@
     <!--/.header-area-->
     <div class="clearfix"></div>
 </div>
-<!-- /.top-area-->
-<!-- top-area End -->
