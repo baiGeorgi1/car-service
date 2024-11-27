@@ -1,6 +1,5 @@
 <div class="top-area">
     <div class="header-area">
-        <!-- Start Navigation -->
         <nav
             class="navbar navbar-default bootsnav navbar-sticky navbar-scrollspy"
             data-minus-value-desktop="70"
@@ -8,7 +7,6 @@
             data-speed="1000"
         >
             <div class="container">
-                <!-- Start Header Navigation -->
                 <div class="navbar-header">
                     <button
                         type="button"
@@ -18,70 +16,56 @@
                     >
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="index.html"
+                    <a class="navbar-brand" routerLink="index.html"
                         >carvilla<span></span
                     ></a>
                 </div>
-                <!--/.navbar-header-->
-                <!-- End Header Navigation -->
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div
                     class="collapse navbar-collapse menu-ui-design"
                     id="navbar-menu"
                 >
                     <ul
-                        *ngIf="isLoggedIn"
                         class="nav navbar-nav navbar-right"
                         data-in="fadeInDown"
                         data-out="fadeOutUp"
                     >
-                        <li class="scroll active">
-                            <a href="#home">home</a>
+                        <li class="scroll">
+                            <a routerLink="/">home</a>
                         </li>
-                        <li class="scroll active">
-                            <a href="#home">login</a>
-                        </li>
+                        <ng-container *ngIf="isLoggedIn">
+                            <li class="scroll">
+                                <a routerLink="/service">service</a>
+                            </li>
+                            <li class="scroll">
+                                <a routerLink="/featured-cars">featured cars</a>
+                            </li>
+                            <li class="scroll">
+                                <a routerLink="/new-cars">new cars</a>
+                            </li>
+                            <li class="scroll">
+                                <a routerLink="/brand">brands</a>
+                            </li>
+                            <li class="scroll">
+                                <a routerLink="/contact">contact</a>
+                            </li>
+                        </ng-container>
 
-                        <li class="scroll active">
-                            <a href="#home">register</a>
-                        </li>
-                        <li class="scroll">
-                            <a href="#service">service</a>
-                        </li>
-                        <li class="scroll">
-                            <a href="#featured-cars">featured cars</a>
-                        </li>
-                        <li class="scroll">
-                            <a href="#new-cars">new cars</a>
-                        </li>
-                        <li class="scroll">
-                            <a href="#brand">brands</a>
-                        </li>
-                        <li class="scroll">
-                            <a href="#contact">contact</a>
-                        </li>
+                        <ng-container *ngIf="!isLoggedIn">
+                            <li class="scroll">
+                                <a routerLink="/users/login">Login</a>
+                            </li>
+                            <li class="scroll">
+                                <a routerLink="/users/register">register</a>
+                            </li>
+                            <li class="scroll">
+                                <a routerLink="/contact">contact</a>
+                            </li>
+                        </ng-container>
                     </ul>
-                    <ul
-                        *ngIf="!isLoggedIn"
-                        class="nav navbar-nav navbar-right"
-                        data-in="fadeInDown"
-                        data-out="fadeOutUp"
-                    >
-                        <li class="scroll">
-                            <a href="#contact">login</a>
-                        </li>
-                    </ul>
-                    <!--/.nav -->
                 </div>
-
-                <!-- /.navbar-collapse -->
             </div>
-            <!--/.container-->
         </nav>
-        <!--/nav-->
-        <!-- End Navigation -->
     </div>
-    <!--/.header-area-->
-    <div class="clearfix"></div>
+    <!-- /.header-area -->
+    <!-- <div class="clearfix"></div> -->
 </div>

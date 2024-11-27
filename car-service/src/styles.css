@@ -1,188 +1,334 @@
-/* **Responsive design */
+/*==================================
+* Author        : "ThemeSine"
+* Template Name : CarVilla  HTML Template
+* Version       : 1.0
+==================================== */
 
-/*max-width:1680px*/
-@media screen and (max-width: 1680px) {
+/*==================================
+font-family: 'Poppins', sans-serif;
+font-family: 'Rufina', serif;
+==================================== */
+
+/*=========== TABLE OF CONTENTS ===========
+1.  General css (Reset code)
+2.  Top-area
+3.  Welcome-hero
+4.  Model-search
+5.  Service
+6.  New-cars
+7.  Featured-cars
+8.  Client-say
+9.  Brand
+10. Blog
+11. Contact
+==========================================*/
+
+/*-------------------------------------
+		1.General css (Reset code)
+--------------------------------------*/
+* {
+    padding: 0;
+    margin: 0;
 }
 
-/*max-width:1440px*/
-@media screen and (max-width: 1440px) {
-    .welcome-hero-txt {
-        padding: 268px 0px 122px;
-    }
-    .model-search-content {
-        position: relative;
-        bottom: 0;
-        top: 100px;
-    }
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    color: #818998;
+    text-transform: initial;
+    max-width: 1920px;
+    margin: 0 auto;
+    overflow-x: hidden;
 }
 
-/*max-width:1199px*/
-@media screen and (max-width: 1199px) {
-    .welcome-hero-txt h2 {
-        font-size: 40px;
-    }
-    .welcome-btn.model-search-btn {
-        margin-left: 28px;
-    }
-    .featured-cars-img {
-        padding: 0 10px;
-    }
+a,
+a:hover,
+a:active,
+a:focus {
+    display: inline-block;
+    text-decoration: none;
+    color: #444a57;
+    font-size: 20px;
+    padding: 0;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    color: #444a57;
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+p {
+    margin: 0;
+    color: #818998;
+    font-size: 16px;
+    line-height: 1.8;
+    text-transform: initial;
+}
+img {
+    border: none;
+    max-width: 100%;
+    height: auto;
+}
+ul {
+    padding: 0;
+    margin: 0 auto;
+    list-style: none;
+}
+ul li {
+    list-style: none;
+    display: inline-block;
+}
+select,
+input,
+textarea,
+button,
+.form-control {
+    box-shadow: none;
+    outline: 0 !important;
+}
+button {
+    background: transparent;
+    border: 0;
+    font-size: 16px;
+    text-transform: capitalize;
 }
 
-/*max-width:1024px*/
-@media screen and (max-width: 1024px) {
+html,
+body {
+    height: 100%;
 }
 
-/*max-width:1008px*/
-@media screen and (max-width: 1008px) {
+[placeholder]:focus::-webkit-input-placeholder {
+    -webkit-transition: opacity 0.3s 0.3s ease;
+    -moz-transition: opacity 0.3s 0.3s ease;
+    -ms-transition: opacity 0.3s 0.3s ease;
+    -o-transition: opacity 0.3s 0.3s ease;
+    transition: opacity 0.3s 0.3s ease;
+    opacity: 0;
+}
+.owl-carousel {
+    z-index: 0;
+}
+/* section-header */
+.section-header {
+    position: relative;
+    text-align: center;
+}
+.section-header h2 {
+    position: relative;
+    font-size: 36px;
+    font-weight: 500;
+    padding-bottom: 35px;
+}
+.section-header h2:before {
+    position: absolute;
+    content: "";
+    width: 80px;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    margin-left: -42px;
+    background: #4e4ffa;
+}
+.section-header p {
+    color: #444a57;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+}
+.section-header h2 span,
+.section-header p span {
+    text-transform: lowercase;
 }
 
-/*max-width:992px*/
-@media screen and (max-width: 992px) {
-    nav.navbar.bootsnav .navbar-collapse.collapse.in {
-        padding-bottom: 30px;
-    }
-    nav.navbar.bootsnav {
-        background-color: #000;
-    }
-    .wrap-sticky nav.navbar.bootsnav.sticked ul.nav > li > a {
-        padding: 18px 0px;
-    }
-    nav.navbar.bootsnav .navbar-brand {
-        padding: 25px;
-    }
-    nav.navbar.bootsnav ul.nav > li > a {
-        padding: 15px 0px;
-        border: transparent;
-    }
+/* section-header */
+
+/*=============Style css=========*/
+
+/*-------------------------------------
+        4. Model-Search
+--------------------------------------*/
+.model-search-content .col-sm-12 {
+    padding: 0;
+}
+.model-search-content {
+    padding: 40px 0;
+    background: #fff;
+    box-shadow: 0 10px 40px 0px rgba(38, 40, 64, 0.2);
+    position: absolute;
+    bottom: -150px;
+    width: 100%;
+    border-radius: 3px;
 }
 
-/*max-width:991px*/
-@media screen and (max-width: 991px) {
-    .welcome-hero-txt h2 {
-        line-height: 1.6;
-    }
-
-    .model-search-content .col-sm-12 {
-        padding: 0 40px;
-    }
-    .single-model-search:last-child {
-        margin-bottom: 30px;
-    }
-    .welcome-btn.model-search-btn {
-        margin: 0;
-    }
-
-    .single-new-cars-item {
-        max-width: 450px;
-        margin: 0 auto;
-    }
-    .new-cars-txt {
-        margin: 30px 0;
-    }
+/*.single-model-search*/
+.single-model-search {
+    margin-bottom: 30px;
+}
+.single-model-search:last-child {
+    margin-bottom: 0;
 }
 
-/*max-width:768px*/
-@media screen and (max-width: 768px) {
+.single-model-search h2 {
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+/*model-select-icon*/
+.model-select-icon {
+    position: relative;
+}
+.model-select-icon .form-control {
+    outline: 0 !important;
+    box-shadow: none;
+    border: 1px solid #f8f8f8;
+    background: #f8f8f8;
+    height: 60px;
+}
+.model-select-icon select {
+    font-size: 16px;
+    color: #888f9d;
+    text-transform: capitalize;
+}
+.model-select-icon:after {
+    position: absolute;
+    content: "\f103";
+    right: 0px;
+    top: 0;
+    font-size: 10px;
+    color: #888f9d;
+    background: #f8f8f8;
+    height: 60px;
+    line-height: 60px;
+    width: 50px;
+    text-align: center;
+    font-family: "Flaticon";
+    pointer-events: none;
+    border: transparent;
+} /*model-select-icon*/
+.welcome-btn.model-search-btn {
+    width: 160px;
+    margin-top: 80px;
+    margin-left: 53px;
 }
 
-/*max-width:767px*/
-@media screen and (max-width: 767px) {
-    .single-service-item {
-        max-width: 350px;
-        margin: 30px auto;
-    }
-    .single-featured-cars {
-        max-width: 350px;
-        margin: 0 auto;
-    }
-    .footer-social {
-        text-align: left;
-    }
-    .footer-social a i {
-        margin-right: 16px;
-        margin-left: 0;
-    }
-    .hm-foot-email {
-        max-width: 300px;
-    }
+/*.single-model-search*/
+
+/*-------------------------------------       
+        8. Clients-say 
+--------------------------------------*/
+.clients-say {
+    padding: 115px 0 80px;
+    background: #f8f9fb;
 }
 
-/*max-width:660px*/
-@media screen and (max-width: 660px) {
+/*single-testimonial-box */
+.single-testimonial-box {
+    padding: 50px 30px 57px;
+    text-align: center;
+    border: 1px solid #dadfe9;
+    overflow-x: hidden;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
 }
 
-/*max-width:640px*/
-@media screen and (max-width: 640px) {
-    .single-testimonial-box {
-        max-width: 350px;
-        margin: 0 auto;
-    }
+/*testimonial-description*/
+.clients-say .testimonial-carousel .col-sm-3,
+.clients-say .testimonial-carousel .col-xs-12 {
+    width: 100%;
+    height: auto;
+}
+/* testimonial-info */
+.testimonial-img {
+    margin-right: 5px;
+    border-radius: 50%;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+.testimonial-person h2 a,
+.testimonial-person h4 {
+    font-size: 16px;
+    color: #5e6778;
+    font-weight: 600;
+}
+.testimonial-person h4 {
+    margin-top: 10px;
+} /* testimonial-info */
+
+/* testimonial-comment */
+.testimonial-comment p {
+    font-size: 16px;
+    color: #5e6778;
+    margin-top: 30px;
+    margin-bottom: 25px;
+} /* testimonial-comment */
+
+/*testimonial-description*/
+.single-testimonial-box:hover h2 a,
+.single-testimonial-box:hover h4,
+.single-testimonial-box:hover p {
+    color: #fff;
+}
+.single-testimonial-box:hover {
+    background: #4e4ffa;
+    border: 1px solid #4e4ffa;
+    box-shadow: 0 12px 30px 0px rgba(0, 1, 193, 0.2);
 }
 
-/*max-width:580px*/
-@media screen and (max-width: 580px) {
+/*owl carousel*/
+.clients-say .owl-carousel .owl-stage {
+    position: relative;
+    padding: 100px 0 40px;
+}
+.clients-say .owl-carousel .owl-item img {
+    display: block;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+/*owl carousel*/
+
+/*-------------------------------------
+        9. Brand
+--------------------------------------*/
+.brand {
+    padding: 120px 0;
+}
+.brand-area {
+    position: relative;
+}
+.brand-area .item {
+    padding: 0 40px 0;
 }
 
-/*max-width:540px*/
-@media screen and (max-width: 540px) {
+.brand .brand-area .owl-carousel .owl-item img {
+    display: block;
+    width: 100%;
+    height: 72px;
+    border-radius: 0;
 }
-
-/*max-width:480px*/
-@media screen and (max-width: 480px) {
-    .welcome-hero h2 {
-        font-size: 30px;
-    }
-    .single-model-search h2 {
-        font-size: 16px;
-    }
-}
-
-/*max-width:400px*/
-@media screen and (max-width: 440px) {
-    .welcome-hero-txt h2 {
-        font-size: 24px;
-        line-height: 1.5;
-    }
-}
-
-/*max-width:399px*/
-@media screen and (max-width: 399px) {
-    .testimonial-carousel .col-sm-3,
-    .testimonial-carousel .col-xs-12 {
-        width: 260px;
-    }
-    .single-service-item h2 a {
-        line-height: 1.5;
-    }
-    .section-header h2 {
-        font-size: 30px;
-    }
-}
-
-/*max-width:350px*/
-@media screen and (max-width: 350px) {
-    nav.navbar.bootsnav .navbar-toggle {
-        margin-right: -25px;
-        left: -10px;
-    }
-    nav.navbar.bootsnav .navbar-brand {
-        padding: 25px 0;
-        font-size: 20px;
-    }
-    .wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand,
-    .wrap-sticky
-        nav.navbar.bootsnav.sticked
-        .navbar-header
-        a.navbar-brand:hover,
-    .wrap-sticky
-        nav.navbar.bootsnav.sticked
-        .navbar-header
-        a.navbar-brand:focus {
-        padding: 25px 0px;
-    }
-}
-
-/*max-width:320px*/
-@media screen and (max-width: 320px) {
-}
+/*-------------------------------------
+        10. Blog
+--------------------------------------*/

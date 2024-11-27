@@ -1,0 +1,49 @@
+/*-------------------------------------
+        6. New-cars
+--------------------------------------*/
+.new-cars {
+    background: #f8f9fb;
+    padding: 112px 0 120px;
+}
+.new-cars-content {
+    padding-top: 96px;
+}
+/*.new-cars-txt*/
+.new-cars-txt {
+    margin-left: 29px;
+    margin-bottom: 30px;
+}
+.new-cars-txt h2 a {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 26px;
+}
+.new-cars-txt h2 a span {
+    text-transform: uppercase;
+}
+.new-cars-para2 {
+    margin-top: 30px;
+}
+.welcome-btn.new-cars-btn {
+    width: 176px;
+    margin-top: 32px;
+}
+/*.new-cars-txt*/
+
+/*.owl-dots */
+.new-cars .owl-theme .owl-dots .owl-dot span {
+    width: 8px;
+    height: 8px;
+    margin: 0px 4px;
+    background: transparent;
+    border: 1px solid #6a7781;
+    border-radius: 50%;
+}
+.new-cars .owl-theme .owl-dots .owl-dot.active span,
+.new-cars .owl-theme .owl-dots .owl-dot:hover span {
+    background: #6a7781;
+}
+.new-cars .owl-theme .owl-nav.disabled + .owl-dots {
+    margin-top: 62px;
+}
+/*.owl-dots */
