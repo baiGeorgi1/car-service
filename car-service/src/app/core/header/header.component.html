@@ -1,71 +1,64 @@
+<!-- top-area Start -->
 <div class="top-area">
-    <div class="header-area">
-        <nav
-            class="navbar navbar-default bootsnav navbar-sticky navbar-scrollspy"
-            data-minus-value-desktop="70"
-            data-minus-value-mobile="55"
-            data-speed="1000"
-        >
-            <div class="container">
-                <div class="navbar-header">
-                    <button
-                        type="button"
-                        class="navbar-toggle"
-                        data-toggle="collapse"
-                        data-target="#navbar-menu"
-                    >
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" routerLink="index.html"
-                        >carvilla<span></span
-                    ></a>
-                </div>
-                <div
-                    class="collapse navbar-collapse menu-ui-design"
-                    id="navbar-menu"
-                >
-                    <ul
-                        class="nav navbar-nav navbar-right"
-                        data-in="fadeInDown"
-                        data-out="fadeOutUp"
-                    >
-                        <li class="scroll">
-                            <a routerLink="/">home</a>
-                        </li>
-                        <ng-container *ngIf="isLoggedIn">
-                            <li class="scroll">
-                                <a routerLink="/service">service</a>
-                            </li>
-                            <li class="scroll">
-                                <a routerLink="/featured-cars">featured cars</a>
-                            </li>
-                            <li class="scroll">
-                                <a routerLink="/new-cars">new cars</a>
-                            </li>
-                            <li class="scroll">
-                                <a routerLink="/brand">brands</a>
-                            </li>
-                            <li class="scroll">
-                                <a routerLink="/contact">contact</a>
-                            </li>
-                        </ng-container>
+  <div class="header-area">
+    <!-- Start Navigation -->
+    <div class="wrap-sticky" style="height: 114px">
+      <nav
+        class="navbar navbar-default bootsnav navbar-sticky sticked"
+        data-minus-value-desktop="70"
+        data-minus-value-mobile="55"
+        data-speed="1000"
+      >
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" routerLink="/">carvilla<span></span></a>
+          </div>
 
-                        <ng-container *ngIf="!isLoggedIn">
-                            <li class="scroll">
-                                <a routerLink="/users/login">Login</a>
-                            </li>
-                            <li class="scroll">
-                                <a routerLink="/users/register">register</a>
-                            </li>
-                            <li class="scroll">
-                                <a routerLink="/contact">contact</a>
-                            </li>
-                        </ng-container>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+          <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+            <ng-container *ngIf="isLoggedIn">
+              <ul
+                class="nav navbar-nav navbar-right"
+                data-in="fadeInDown"
+                data-out="fadeOutUp"
+              >
+                <li class="scroll"><a routerLink="/">home</a></li>
+                <li class="scroll"><a routerLink="/service">service</a></li>
+                <li class="scroll">
+                  <a routerLink="/featured-cars">featured cars</a>
+                </li>
+                <li class="scroll"><a routerLink="/new-cars">new cars</a></li>
+                <li class="scroll"><a routerLink="/brand">brands</a></li>
+                <li class="scroll"><a routerLink="/contacts">contact</a></li>
+                <li class="scroll"><a routerLink="/users/logout">logout</a></li>
+              </ul>
+            </ng-container>
+            <ng-container *ngIf="!isLoggedIn">
+              <ul
+                class="nav navbar-nav navbar-right"
+                data-in="fadeInDown"
+                data-out="fadeOutUp"
+              >
+                <li class="scroll"><a routerLink="/">home</a></li>
+                <li class="scroll"><a routerLink="/users/login">login</a></li>
+                <li class="scroll">
+                  <a routerLink="/users/register">register</a>
+                </li>
+                <li class="scroll"><a routerLink="/contacts">contact</a></li>
+              </ul>
+            </ng-container>
+
+            <!--/.nav -->
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!--/.container-->
+      </nav>
     </div>
-    <!-- /.header-area -->
-    <!-- <div class="clearfix"></div> -->
+    <!--/nav-->
+    <!-- End Navigation -->
+  </div>
+  <!--/.header-area-->
+  <div class="clearfix"></div>
 </div>
+<!-- /.top-area-->
+<!-- top-area End -->

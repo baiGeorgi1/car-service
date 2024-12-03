@@ -1,19 +1,24 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import { MainComponent } from "./main/main.component";
-import { ServiceComponent } from "./service/service.component";
-import { NewestCarsComponent } from "./newest-cars/newest-cars.component";
-import { FeaturedCarsComponent } from "./featured-cars/featured-cars.component";
-import { PagesRoutingModule } from "./pages-routing.module";
+import { HomeComponent } from './home/home.component';
+import { ServiceComponent } from './service/service.component';
+import { NewestCarsComponent } from './newest-cars/newest-cars.component';
+import { FeaturedCarsComponent } from './featured-cars/featured-cars.component';
+import { PagesRoutingModule } from './pages-routing.module';
+import { CoreModule } from '../core/core.module';
+import { ContactsComponent } from './contacts/contacts.component';
+import { ErrorComponent } from '../error/error.component';
 
 @NgModule({
-    declarations: [
-        MainComponent,
-        ServiceComponent,
-        NewestCarsComponent,
-        FeaturedCarsComponent,
-    ],
-    imports: [CommonModule, PagesRoutingModule],
+  declarations: [
+    HomeComponent,
+    ServiceComponent,
+    NewestCarsComponent,
+    FeaturedCarsComponent,
+    ContactsComponent,
+    ErrorComponent,
+  ],
+  imports: [CommonModule, CoreModule, PagesRoutingModule],
 })
 export class PagesModule {}
