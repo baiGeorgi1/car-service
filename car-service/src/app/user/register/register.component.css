@@ -1,4 +1,8 @@
 .register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: -31px;
     position: relative;
     background: url(/assets/images/welcome-hero/welcome-banner.jpg) no-repeat;
@@ -16,4 +20,94 @@
     height: 100%;
     background: rgba(42, 45, 84, 0.6);
     z-index: 0;
+}
+
+/* $left-color:  #242e4d;
+$right-color: #897e79;
+$green-dark:  #35c3c1;
+$green-light: #00d6b7;
+$gray:        #8f8f8f;
+$gray-light:  #f5f6f8; */
+
+* {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.register-form {
+    width: 100%;
+    background: rgba(black, 0.15);
+    &:before {
+        content: "";
+        top: -2px;
+        left: 0;
+        height: 2px;
+        width: 100%;
+
+        background: linear-gradient(to right, #35c3c1, #00d6b7);
+    }
+
+    @media screen and (min-width: 600px) {
+        width: 150vw;
+        max-width: 25em;
+    }
+}
+
+.flex-row {
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.lf--label {
+    width: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f5f6f8;
+    cursor: pointer;
+}
+.lf--input {
+    flex: 1;
+    padding: 1em;
+    border: 0;
+    color: #8f8f8f;
+    font-size: 1rem;
+
+    &:focus {
+        outline: none;
+        transition: transform 0.15s ease;
+        transform: scale(1.1);
+    }
+}
+
+.lf--submit {
+    display: block;
+    padding: 1em;
+    width: 100%;
+
+    background: linear-gradient(to right, #7db5f5, #6bc8ec);
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 0.75em;
+    font-weight: 600;
+    text-shadow: 0 1px 0 rgba(black, 0.2);
+
+    &:focus {
+        outline: none;
+        transition: transform 0.15s ease;
+        transform: scale(1.1);
+    }
+}
+
+.lf--forgot {
+    margin-top: 1em;
+    color: #4c5df5;
+    font-size: 0.65em;
+    text-align: center;
+    position: relative;
+}
+
+::placeholder {
+    color: #8f8f8f;
 }
