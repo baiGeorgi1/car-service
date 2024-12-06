@@ -1,6 +1,11 @@
+<ng-container *ngIf="cars.length == 0">
+    <div class="no-cars">
+        <h1>No Car for selling</h1>
+    </div>
+</ng-container>
 <div *ngFor="let car of cars" class="col-lg-3 col-md-4 col-sm-6">
     <div class="single-featured-cars">
-        <div class="featured-img-box">
+        <div class="featured-img-box fixed">
             <div class="featured-cars-img">
                 <img src="{{ car.imageUrl }}" alt="cars" />
             </div>
@@ -9,7 +14,7 @@
                     model: {{ car.year }}
                     <span class="featured-mi-span">{{ car.type }}</span>
                     <span class="featured-hp-span"> {{ car.hp }}HP</span>
-                    automatic
+                    {{ car.transmission }}
                 </p>
             </div>
         </div>
