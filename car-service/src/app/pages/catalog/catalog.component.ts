@@ -1,4 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { CarService } from "src/app/services/car.service";
+import { Car } from "src/app/types/car";
 
 @Component({
     selector: "app-catalog",

@@ -1,0 +1,29 @@
+<div *ngFor="let car of cars" class="col-lg-3 col-md-4 col-sm-6">
+    <div class="single-featured-cars">
+        <div class="featured-img-box">
+            <div class="featured-cars-img">
+                <img src="{{ car.image }}" alt="cars" />
+            </div>
+            <div class="featured-model-info">
+                <p>
+                    model: {{ car.production_date }}
+                    <span class="featured-mi-span">{{ car.type }}</span>
+                    <span class="featured-hp-span">
+                        {{ car.horse_power }}HP</span
+                    >
+                    automatic
+                </p>
+            </div>
+        </div>
+        <div class="featured-cars-txt">
+            <h2>
+                <a href="#">audi <span> a3</span> sedan</a>
+            </h2>
+            <h3>$95,500</h3>
+            <p>
+                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+                consectetur, adipisci velit, sed quia non.
+            </p>
+        </div>
+    </div>
+</div>
