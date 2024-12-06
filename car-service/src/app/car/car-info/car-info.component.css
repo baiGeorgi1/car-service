@@ -1,4 +1,7 @@
-/*.single-featured-cars*/
+.single-featured-cars {
+    display: flex;
+    flex-direction: column;
+}
 .featured-img-box {
     border: 1px solid #dadfe9;
 }

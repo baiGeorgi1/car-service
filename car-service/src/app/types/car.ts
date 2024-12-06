@@ -1,15 +1,12 @@
 export interface Car {
     _id: string;
-    brand: string;
+    model: string;
     type: string;
-    production_date: number;
-    horse_power: number;
-    engine: string;
+    year: number;
+    hp: number;
     transmission: string;
-    image: string;
+    imageUrl: string;
     price: number;
-    car_condition: string;
-    body: string;
     description: string;
     buyingList: [];
     owner: Object;
