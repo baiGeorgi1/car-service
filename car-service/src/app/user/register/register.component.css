@@ -84,7 +84,6 @@ $gray-light:  #f5f6f8; */
     display: block;
     padding: 1em;
     width: 100%;
-
     background: linear-gradient(to right, #7db5f5, #6bc8ec);
     border: 0;
     color: #fff;
@@ -92,7 +91,7 @@ $gray-light:  #f5f6f8; */
     font-size: 0.75em;
     font-weight: 600;
     text-shadow: 0 1px 0 rgba(black, 0.2);
-
+    cursor: pointer;
     &:focus {
         outline: none;
         transition: transform 0.15s ease;
@@ -100,7 +99,7 @@ $gray-light:  #f5f6f8; */
     }
 }
 
-.lf--forgot {
+.lf--change {
     margin-top: 1em;
     color: #4c5df5;
     font-size: 0.65em;
@@ -110,4 +109,20 @@ $gray-light:  #f5f6f8; */
 
 ::placeholder {
     color: #8f8f8f;
+}
+.error {
+    background-color: #ffcccc;
+    border: 2px solid #ff0000;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+.error h3 {
+    text-align: center;
+    padding: 10px 0;
+    text-transform: none;
+    color: rgb(238, 45, 45);
+}
+.disabled-btn {
+    background: linear-gradient(to right, #fa5252, #ff0000);
+    cursor: not-allowed;
 }
