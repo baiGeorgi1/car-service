@@ -39,6 +39,9 @@ async function dbConnect() {
 
         if (!userExist) {
             for (const userdata of users) {
+                if (userdata._id && typeof userdata._id === 'string') {
+                    userdata._id = mongoose.Types.ObjectId(userdata._id);
+                }
                 const user = new User(userdata);
                 await user.save();
             }
