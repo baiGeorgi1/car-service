@@ -4,6 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "import": "mongoimport --uri 'mongodb://localhost:27017' --db car-shop --collection users --file ./server/data/car-shop.users.json --jsonArray ",
         "start": "nodemon src/index.js"
     },
     "keywords": [],
