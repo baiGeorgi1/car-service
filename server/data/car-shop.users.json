@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "6731cb561814a623800eb963"
+  },
+  "email": "gogo@abv.bg",
+  "username": "Gogo",
+  "password": "$2b$10$3KZOjf2EOSSOyBpDDjWRR.jsUB4n3hRVgqpnH0zPtV.0zzIyEvWg.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675d4960308b053fcbece0fa"
+  },
+  "username": "gogo",
+  "email": "gogo111@abv.bg",
+  "password": "$2b$10$Ky/sNfIgJ.9zBIWZiDOpFu/ujJbfWqYP/69ahsu8Q7XAE9Sl3b0lC",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675d51a3308b053fcbece10e"
+  },
+  "username": "gogo",
+  "email": "gogo1111111@abv.bg",
+  "password": "$2b$10$6sCOhuq/sPqg5bSSvC.NN.a9KNvxTsHjeAOFOmNcmwK5zwNp.h7SG",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "675d5ddfbc5f00dc3311e085"
+  },
+  "username": "gogo",
+  "email": "gogo2221@abv.bg",
+  "password": "$2b$10$tYBz3lcQGD8reE7cHPlkOegtcQDPENiQjbZ/zSxRolD.1JWoRSxb.",
+  "__v": 0
+}]
