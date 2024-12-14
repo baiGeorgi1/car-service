@@ -2,10 +2,10 @@ const { mongoose } = require('mongoose');
 
 //TO DO add err messages
 const carSchema = new mongoose.Schema({
-    ImageBitmapRenderingContext: {
+    model: {
         type: String,
-        required: [true, 'Name is required!'],
-        minLength: [3, 'Name must be at least 2 characters!'],
+        required: [true, 'Model is required!'],
+        minLength: [3, 'Model must be at least 2 characters!'],
 
     },
     type: {
@@ -15,15 +15,15 @@ const carSchema = new mongoose.Schema({
 
 
     },
-    production_date: {
+    year: {
         type: Number,
-        required: [true, 'Production is required!'],
+        required: [true, 'Insert year of production!'],
         validate: {
             validator: (value) => 1900 >= value <= 2024,
             message: 'Production year must be between 1900 - 2024 year!'
         }
     },
-    horse_power: {
+    hp: {
         type: Number,
         required: [true, 'Horse power is required!'],
         validate: {
@@ -31,18 +31,13 @@ const carSchema = new mongoose.Schema({
             message: 'Horse power must be possitive number!'
         }
     },
-    engine: {
-        type: String,
-        required: [true, 'Engine is required!'],
-        minLength: [2, 'Engine must be at least 2 characters long!']
-    },
     // todo - naprawi go s dwa izbora!
     transmission: {
         type: String,
         required: [true, 'Transmission is required!'],
         minLength: [2, 'Transmission must be at least 10 characters long!']
     },
-    image: {
+    imageUrl: {
         type: String,
         required: [true, 'Add image please!'],
         matcth: [/^[https?:]+\/\//gm, 'Invalid image addres!']
@@ -54,17 +49,6 @@ const carSchema = new mongoose.Schema({
             validator: (value) => value >= 0,
             message: 'The price must be possitive number!'
         }
-    },
-    // todo - naprawi go s dwa izbora!
-    car_condition: {
-        type: String,
-        required: [true, 'Car condition is required!'],
-        minLength: [2, 'Car condition must be at least 10 characters long!']
-    },
-    body: {
-        type: String,
-        required: [true, 'Body is required!'],
-        minLength: [2, 'Body must be at least 10 characters long!']
     },
     description: {
         type: String,

@@ -3,7 +3,7 @@ import { Router } from "@angular/router";
 import { FormBuilder, Validators } from "@angular/forms";
 
 import { emailValidator } from "src/app/utils/email-validator";
-import { UserService } from "../user.service";
+import { UserService } from "../../services/user.service";
 
 @Component({
     selector: "app-login",
@@ -29,6 +29,18 @@ export class LoginComponent {
         if (this.form.invalid) {
             return;
         }
-        console.log(this.form.value);
+
+        const { email, password } = this.form.value;
+        this.userService.userSubscription = this.userService
+            .login(email!, password!)
+            .subscribe({
+                next: (userData) => {
+                    console.log("HERE", userData);
+
+                    this.userService.setUser(userData);
+                    this.router.navigate(["/catalog"]);
+                },
+                error: (err) => (this.errorMsg = err.error.message),
+            });
     }
 }

@@ -125,7 +125,7 @@
                 </div>
             </ng-container>
             <div class="flex-row">
-                <label class="lf--label" for="re-password">
+                <label class="lf--label" for="rePassword">
                     <svg x="0px" y="0px" width="15px" height="5px">
                         <g>
                             <path
@@ -136,19 +136,19 @@
                     </svg>
                 </label>
                 <input
-                    id="re-password"
-                    name="re-password"
+                    id="rePassword"
+                    name="rePassword"
                     class="lf--input"
                     placeholder="Repeat password"
-                    type="re-password"
-                    formControlName="re-password"
+                    type="rePassword"
+                    formControlName="rePassword"
                 />
             </div>
             <ng-container
-                *ngIf="form.get('passGroup')?.get('re-password')?.touched"
+                *ngIf="form.get('passGroup')?.get('rePassword')?.touched"
             >
                 <div
-                    *ngIf="form.get('passGroup')?.errors?.['matchPassword'] || form.get('passGroup')?.get('re-password')?.errors?.['required']"
+                    *ngIf="form.get('passGroup')?.errors?.['matchPassword'] || form.get('passGroup')?.get('rePassword')?.errors?.['required']"
                     class="error"
                 >
                     <h3>Repeated pasword does't match password!</h3>
