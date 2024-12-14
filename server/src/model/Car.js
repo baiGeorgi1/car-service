@@ -1,4 +1,5 @@
-const { mongoose } = require('mongoose');
+const mongoose = require('mongoose');
+
 
 //TO DO add err messages
 const carSchema = new mongoose.Schema({
