@@ -10,10 +10,7 @@ const URI = 'mongodb://localhost:27017/car-shop';
 
 async function dbConnect() {
     const connectWithRetry = () => {
-        mongoose.connect(URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        })
+        mongoose.connect(URI)
             .then()
             .catch((err) => {
                 console.error('MongoDB connection error:', err);
@@ -22,38 +19,44 @@ async function dbConnect() {
     };
     await connectWithRetry();
 
-    // // **DATA reading**
-    // const usersPath = path.resolve(__dirname, '../../data/car-shop.users.json');
-    // const carPath = path.resolve(__dirname, '../../data/car-shop.cars.json');
+    // **DATA reading**
+    const usersPath = path.resolve(__dirname, '../../data/car-shop.users.json');
+    const carPath = path.resolve(__dirname, '../../data/car-shop.cars.json');
 
-    // const userData = fs.readFileSync(usersPath, 'utf-8');
-    // const carData = fs.readFileSync(carPath, 'utf-8');
+    const userData = fs.readFileSync(usersPath, 'utf-8');
+    const carData = fs.readFileSync(carPath, 'utf-8');
 
-    // const users = JSON.parse(userData);
-    // const cars = JSON.parse(carData);
+    const users = JSON.parse(userData);
+    const cars = JSON.parse(carData);
 
-    // // ** Import users **
-    // const dataImport = async () => {
-    //     const userExist = await User.exists({});
-    //     const carExist = await Car.exists({});
+    // ** Import users **
+    const dataImport = async () => {
+        try {
+            const userExist = await User.countDocuments({});
+            const carExist = await Car.countDocuments({});
 
-    //     if (!userExist) {
-
-    //         for (const userdata of users) {
-    //             if (userdata._id && typeof userdata._id === 'string') {
-    //                 userdata._id = mongoose.Types.ObjectId(userdata._id);
-    //             }
-    //             const user = new User(userdata);
-    //             await user.save();
-    //         }
-    //     }
-    //     if (!carExist) {
-    //         for (const carData of cars) {
-    //             const car = new Car(carData);
-    //             await car.save();
-    //         }
-    //     }
-    // };
-    // await dataImport();
+            if (userExist === 0) {
+                console.log('Importing users ...');
+                const userObj = users.map(user => {
+                    if (user._id && typeof user._id === 'string') {
+                        user._id = mongoose.Types.ObjectId(user._id);
+                    }
+                    return user;
+                });
+                await User.insertMany(userObj);
+                console.log('Users imported! ');
+            }
+            if (carExist === 0) {
+                console.log('Importing cars ...');
+                const carObj = cars.map(car => {
+                    return car;
+                });
+                await Car.insertMany(carObj);
+            }
+        } catch (error) {
+            console.error('Error during data import:', err);
+        }
+    };
+    await dataImport();
 }
 module.exports = dbConnect;
