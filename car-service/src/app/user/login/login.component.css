@@ -84,7 +84,7 @@ $gray-light:  #f5f6f8; */
     padding: 1em;
     width: 100%;
 
-    background: linear-gradient(to right, #7db5f5, #4c5df5);
+    background: linear-gradient(to right, #7db5f5, #6bc8ec);
     border: 0;
     color: #fff;
     cursor: pointer;
@@ -109,4 +109,19 @@ $gray-light:  #f5f6f8; */
 
 ::placeholder {
     color: #8f8f8f;
+}
+.error {
+    background-color: #ffcccc;
+    border: 2px solid #ff0000;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+.error h3 {
+    text-align: center;
+    padding: 10px 0;
+    color: rgb(238, 45, 45);
+}
+.disabled-btn {
+    background: linear-gradient(to right, #fa5252, #ff0000);
+    cursor: not-allowed;
 }

@@ -1,0 +1,36 @@
+[
+    {
+        "_id": {
+            "$oid": "6731cf00bcb6ca6709e0ef99"
+        },
+        "type": "A3",
+        "transmission": "manual",
+        "price": 9500,
+        "description": "Perfect car",
+        "buyingList": [],
+        "owner": {
+            "$oid": "6731cb561814a623800eb963"
+        },
+        "__v": 0,
+        "hp": 150,
+        "imageUrl": "https://news-site-za.s3.af-south-1.amazonaws.com/images/2017/02/IMG_9276.jpg",
+        "model": "Audi",
+        "year": 2017
+    },
+    {
+        "_id": "6731cf00bcb6ca6709e0ef99",
+        "type": "Corolla 1.6 euro 6",
+        "transmission": "manual",
+        "price": 18500,
+        "description": "Закупена и обслужвана само в представителството на Тойота в България. Първи собственик. Перфектно техническо състояние. Перфектен интериор и екстериор. Чисто нови зимни гуми.",
+        "buyingList": [],
+        "owner": {
+            "$oid": "6731cb561814a623800eb963"
+        },
+        "__v": 0,
+        "hp": 132,
+        "imageUrl": "https://platform.cstatic-images.com/in/v2/stock_photos/a64393c6-0136-4a72-b330-744a9736efd1/ee0f249b-1136-4f5e-b068-42e7a17c5c4d.png",
+        "model": "Toyota",
+        "year": 2017
+    }
+]

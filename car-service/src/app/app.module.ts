@@ -9,6 +9,7 @@ import { UserModule } from "./user/user.module";
 import { PagesModule } from "./pages/pages.module";
 import { HttpClientModule } from "@angular/common/http";
 import { TruncatePipe } from "./pipes/truncate.pipe";
+import { AppInterceptorProvider } from "./app.interceptor";
 
 @NgModule({
     declarations: [AppComponent],
@@ -21,7 +22,7 @@ import { TruncatePipe } from "./pipes/truncate.pipe";
         RouterModule,
         HttpClientModule,
     ],
-    providers: [],
+    providers: [AppInterceptorProvider],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

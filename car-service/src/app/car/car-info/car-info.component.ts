@@ -25,8 +25,8 @@ export class CarInfoComponent implements OnInit {
     ngOnInit(): void {
         this.carApi.getCars().subscribe({
             next: (car) => {
-                this.cars = car; // Съхранява данните в `cars`
-                console.log("Cars fetched:", this.cars);
+                this.cars = car;
+                // console.log("Cars fetched:", this.cars);
             },
             error: (err) => {
                 console.error("Error fetching cars:", err);
