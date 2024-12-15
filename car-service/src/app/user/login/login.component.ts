@@ -35,8 +35,6 @@ export class LoginComponent {
             .login(email!, password!)
             .subscribe({
                 next: (userData) => {
-                    console.log("HERE", userData);
-
                     this.userService.setUser(userData);
                     this.router.navigate(["/catalog"]);
                 },

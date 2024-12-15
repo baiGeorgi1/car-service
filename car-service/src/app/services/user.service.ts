@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, OnDestroy } from "@angular/core";
 import { BehaviorSubject, Observable, Subscription, tap, timeout } from "rxjs";
 import { User, UserAuth } from "../types/user";
 import { environment } from "src/environments/environment.development";
@@ -9,7 +9,7 @@ const { userUrl, USER_KEY } = environment;
 @Injectable({
     providedIn: "root",
 })
-export class UserService {
+export class UserService implements OnDestroy {
     private user$$ = new BehaviorSubject<UserAuth | undefined>(undefined);
     public user$ = this.user$$.asObservable();
 
@@ -62,5 +62,11 @@ export class UserService {
         return this.http
             .post(`${userUrl}/logout`, {})
             .pipe(tap((user) => this.user$$.next(undefined)));
+    }
+    clearUser(): void {
+        localStorage.removeItem(USER_KEY);
+    }
+    ngOnDestroy(): void {
+        this.userSubscription.unsubscribe();
     }
 }
