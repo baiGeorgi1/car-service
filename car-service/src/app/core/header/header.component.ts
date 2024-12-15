@@ -19,7 +19,21 @@ export class HeaderComponent {
         return this.userService.user?.email || "";
     }
     logout() {
-        this.userService.logout();
-        this.router.navigate(["/"]);
+        this.userService.logout().subscribe({
+            next: () => {
+                this.userService.clearUser();
+                this.router.navigate(["/"]);
+            },
+            error: () => {
+                this.userService.clearUser();
+                console.log("ERRROR");
+
+                this.router.navigate(["/users/login"]);
+            },
+            complete: () => {
+                this.userService.clearUser();
+                this.router.navigate(["/"]);
+            },
+        });
     }
 }

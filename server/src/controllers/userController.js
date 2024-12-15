@@ -36,20 +36,14 @@ router.post('/register', async (req, res) => {
     }
 });
 
-
-//     try {
-//         const token = await userManager.register({ email, username, password, repeatPassword });
-//         res.cookie(TOKEN_KEY, token);
-//         res.redirect('/');
-//     } catch (err) {
-//         res.render('users/register', { email, error: getErrorMessage(err) });
-//     }
-// });
-
-
-router.get('/logout', (req, res) => {
-    res.clearCookie(TOKEN_KEY);
-    res.redirect('/');
+router.post('/logout', (req, res) => {
+    try {
+        const result = res.clearCookie(TOKEN_KEY);
+        res.status(201).json(result._destroy);
+    } catch (err) {
+        res.status(400).json({ error: getErrorMessage(err) });
+    }
+    // res.redirect('/');
 });
 
 module.exports = router;
