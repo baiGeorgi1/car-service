@@ -16,7 +16,7 @@ export class HeaderComponent {
 
     // todo make getter for username
     get username(): string {
-        return this.userService.user?.email || "";
+        return this.userService.getUser()?.username || "";
     }
     logout() {
         this.userService.logout().subscribe({
