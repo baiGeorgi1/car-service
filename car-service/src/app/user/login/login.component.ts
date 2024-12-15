@@ -36,7 +36,7 @@ export class LoginComponent {
             .subscribe({
                 next: (userData) => {
                     this.userService.setUser(userData);
-                    this.router.navigate(["/catalog"]);
+                    this.router.navigate(["/"]);
                 },
                 error: (err) => (this.errorMsg = err.error.message),
             });

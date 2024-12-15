@@ -7,7 +7,13 @@
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
             <!-- TODO fix button -->
-            <button class="welcome-btn" routerLink="/users/login">Login</button>
+
+            <button
+                class="welcome-btn"
+                [routerLink]="isLoggedIn ? '/catalog' : '/users/login'"
+            >
+                {{ isLoggedIn ? "Catalog" : "Login" }}
+            </button>
         </div>
     </div>
 </section>
