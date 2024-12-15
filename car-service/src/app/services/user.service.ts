@@ -42,7 +42,7 @@ export class UserService implements OnDestroy {
                 }),
             );
     }
-    // !! TESTING
+
     register(UserData: {
         username: string;
         email: string;
@@ -54,18 +54,42 @@ export class UserService implements OnDestroy {
             .pipe(tap((user) => this.user$$.next(user)));
     }
 
+    logout() {
+        return this.http
+            .post(`${userUrl}/logout`, {})
+            .pipe(tap(() => this.user$$.next(undefined)));
+    }
+
+    getUser() {
+        const token = localStorage.getItem(USER_KEY);
+        if (token) {
+            const userData = this.decodeJWT(token);
+            return userData;
+        }
+        return this.http
+            .get<UserAuth>(`${userUrl}/me`)
+            .pipe(tap((user) => this.user$$.next(user)));
+    }
+
     setUser(data: any): void {
         localStorage.setItem(environment.USER_KEY, JSON.stringify(data));
     }
 
-    logout() {
-        return this.http
-            .post(`${userUrl}/logout`, {})
-            .pipe(tap((user) => this.user$$.next(undefined)));
-    }
     clearUser(): void {
         localStorage.removeItem(USER_KEY);
     }
+
+    decodeJWT(token: string): any | null {
+        try {
+            const payload = token.split(".")[1];
+            const decoded = atob(payload);
+            return JSON.parse(decoded);
+        } catch (error) {
+            console.error("Invalid JWT token:", error);
+            return null;
+        }
+    }
+
     ngOnDestroy(): void {
         this.userSubscription.unsubscribe();
     }

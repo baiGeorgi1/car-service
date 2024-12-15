@@ -107,6 +107,9 @@ nav.navbar.bootsnav .navbar-toggle {
 nav.navbar.bootsnav .navbar-toggle i {
     color: #4e4ffa;
 }
+.lowerCase {
+    text-transform: capitalize !important;
+}
 .logout {
     cursor: pointer;
 }
