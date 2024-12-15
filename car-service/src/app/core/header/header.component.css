@@ -107,4 +107,7 @@ nav.navbar.bootsnav .navbar-toggle {
 nav.navbar.bootsnav .navbar-toggle i {
     color: #4e4ffa;
 }
+.logout {
+    cursor: pointer;
+}
 /*.navbar-toggle */
