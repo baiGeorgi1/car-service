@@ -1,9 +1,9 @@
-import { Component, LOCALE_ID, OnInit } from "@angular/core";
-import { CarService } from "src/app/services/car.service";
-import { Car } from "src/app/types/car";
+import { Component, Input, LOCALE_ID } from "@angular/core";
+
 // Transform digits
 import { registerLocaleData } from "@angular/common";
 import localeBg from "@angular/common/locales/bg";
+import { Car } from "src/app/types/car";
 
 registerLocaleData(localeBg);
 @Component({
@@ -17,20 +17,7 @@ registerLocaleData(localeBg);
     templateUrl: "./car-info.component.html",
     styleUrls: ["./car-info.component.css"],
 })
-export class CarInfoComponent implements OnInit {
-    cars: Car[] = [];
-
-    constructor(private carApi: CarService) {}
-
-    ngOnInit(): void {
-        this.carApi.getCars().subscribe({
-            next: (car) => {
-                this.cars = car;
-                // console.log("Cars fetched:", this.cars);
-            },
-            error: (err) => {
-                console.error("Error fetching cars:", err);
-            },
-        });
-    }
+export class CarInfoComponent {
+    isOwner!: boolean;
+    @Input() cars: Car[] = [];
 }

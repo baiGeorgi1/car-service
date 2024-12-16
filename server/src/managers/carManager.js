@@ -12,7 +12,7 @@ exports.getAll = async (name, type) => {
 
     return result;
 };
-exports.getById = async (itemId) => await Car.findById(itemId).lean();
+exports.getById = async (carId) => await Car.findById(carId).lean();
 
 exports.deleteItem = async (id) => {
     await Car.findByIdAndDelete(id).lean();

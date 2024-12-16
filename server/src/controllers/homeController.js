@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const carManager = require('../managers/carManager');
-const { isAuth } = require('../middlewares/auth');
+const { auth, isAuth } = require('../middlewares/auth');
 
 
 router.get('/', async (req, res) => {
@@ -13,6 +13,41 @@ router.get('/catalog', async (req, res) => {
     res.json(cars);
     // res.render('catalog', { cars });
 });
+
+router.get('/catalog/:carId', auth, async (req, res) => {
+
+    const carId = req.params.carId;
+
+    try {
+        const user = req.query;
+        const car = await carManager.getById(carId);
+        res.json(car);
+        const result = car.buyingList?.find((e) => e._id.toString() == user);
+        const isOwner = user == car.owner.toString();
+
+        if (isOwner) {
+            // res.render('car/details', { item: car, isOwner });
+        } else {
+            const isBought = user == result?._id.toString();
+
+            // res.render('car/details', { item: car, isBought });
+        }
+
+    } catch (err) {
+        const error = getErrorMessage(err.error.message);
+        const car = await carManager.getById(carId);
+        // res.render(`car/details`, { car, error });
+    }
+});
+
+
+
+
+
+
+
+
+
 router.get('/search', isAuth, async (req, res) => {
     const { name, type } = req.query;
     const found = await carManager.getAll(name, type);

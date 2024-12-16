@@ -19,11 +19,13 @@ router.post('/add', auth, isAuth, async (req, res) => {
 
         res.redirect('/catalog');
     } catch (error) {
-        res.render('cars/add', { data, error: getErrorMessage(error), });
+        // res.render('cars/add', { data, error: getErrorMessage(error), });
     }
 
 });
-router.get('/details/:carId', auth, async (req, res) => {
+router.get('/catalog/:carId', auth, async (req, res) => {
+    console.log('VIEW CAR');
+
     const id = req.params.carId;
     try {
         const user = req.user?._id;

@@ -21,4 +21,9 @@ export class CarService {
             }),
         );
     }
+    getCar(id: string, userId: string) {
+        return this.http.get<Car>(`${carApi}/catalog/${id}`, {
+            params: { userId: userId },
+        });
+    }
 }

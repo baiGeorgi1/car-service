@@ -1,0 +1,8 @@
+@import url("../../../assets/css/bootstrap.min.css");
+
+.featured-cars {
+    padding: 112px 0 120px;
+}
+.featured-cars-content {
+    padding-top: 96px;
+}
