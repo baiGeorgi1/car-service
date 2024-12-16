@@ -1,6 +1,6 @@
-import { Component, OnDestroy } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { CarService } from "src/app/services/car.service";
 import { UserService } from "src/app/services/user.service";
@@ -11,10 +11,10 @@ import { Car } from "src/app/types/car";
     templateUrl: "./add-edit-car.component.html",
     styleUrls: ["./add-edit-car.component.css"],
 })
-export class AddEditCarComponent implements OnDestroy {
+export class AddEditCarComponent implements OnInit,OnDestroy {
     carAdded = {} as Car;
     editMode: boolean = false;
-    addMode: boolean = false;
+    addMode: boolean = true;
     subscribe$!: Subscription;
     errorMsg!: string;
 
@@ -59,9 +59,18 @@ export class AddEditCarComponent implements OnDestroy {
         private carService: CarService,
         private fb: FormBuilder,
         private router: Router,
+        private activeRoute: ActivatedRoute
     ) {}
     public get userId(): string {
         return this.userService.getUser()._id;
+    }
+    ngOnInit(): void {
+        this.activeRoute.queryParams.subscribe((params)=>{
+            // console.log(params);
+            this.editMode = params['editMode'] === 'true';
+            // console.log('editMode' , this.editMode);
+            
+        })
     }
 
     addCar(): void {

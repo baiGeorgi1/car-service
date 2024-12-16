@@ -13,6 +13,7 @@ const routes: Routes = [
     { path: "catalog", component: CatalogComponent },
     { path: "catalog/my-cars", component: MyCarsComponent },
     { path: "catalog/my-cars/add-car", component: AddEditCarComponent },
+    { path: "catalog/my-cars/edit-car", component: AddEditCarComponent },
     { path: "catalog/:car-details", component: ViewCarComponent },
     { path: "service", component: ServiceComponent },
     { path: "contacts", component: ContactsComponent },
