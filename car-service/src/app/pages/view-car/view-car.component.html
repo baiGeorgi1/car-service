@@ -1,0 +1,62 @@
+<section id="new-cars" class="new-cars">
+    <div class="container">
+        <div class="section-header">
+            <p>TODO</p>
+            <h2>TODO</h2>
+        </div>
+        <!--/.section-header-->
+        <div class="new-cars-content">
+            <div class="owl-theme" id="new-cars-carousel">
+                <div class="new-cars-item">
+                    <div class="single-new-cars-item">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12">
+                                <div class="new-cars-img">
+                                    <img src="{{ car.imageUrl }}" alt="img" />
+                                </div>
+                                <!-- /.new-cars-img -->
+                            </div>
+                            <div class="col-md-9 col-sm-12">
+                                <div class="new-cars-txt">
+                                    <h2>
+                                        {{ car.model }}
+                                        <span> {{ car.type }}</span>
+                                    </h2>
+                                    <p>
+                                        Duis aute irure dolor in reprehenderit
+                                        in voluptate velit esse cillum dolore eu
+                                        fugiat nulla pariatur. Excepteur sint
+                                        occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim
+                                        id est laborum.
+                                    </p>
+                                    <p class="new-cars-para2">
+                                        Sed ut pers unde omnis iste natus error
+                                        sit voluptatem accusantium doloremque
+                                        laudantium.
+                                    </p>
+                                    <ng-container *ngIf="isOwner">
+                                        <button
+                                            class="welcome-btn new-cars-btn"
+                                            onclick="window.location.href='#'"
+                                        >
+                                            edit car
+                                        </button>
+                                        <button
+                                            class="welcome-btn new-cars-btn"
+                                            onclick="window.location.href='#'"
+                                        >
+                                            delete car
+                                        </button>
+                                    </ng-container>
+                                </div>
+                                <!--/.new-cars-txt-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/#new-cars-carousel-->
+        </div>
+    </div>
+</section>

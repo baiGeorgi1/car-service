@@ -5,6 +5,7 @@ const carController = require('./controllers/carController');
 
 router.use(homeController);
 router.use('/users', userController);
+// todo - remove this controller
 router.use('/car', carController);
 
 router.get('*', (req, res) => {
