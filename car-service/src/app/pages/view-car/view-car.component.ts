@@ -54,6 +54,11 @@ export class ViewCarComponent implements OnInit {
             complete: () => this.router.navigate(["catalog/my-cars"]),
         });
     }
+
+    onEdit():void{
+        this.router.navigate(['/catalog/my-cars/edit-car'],{queryParams:{editMode:true}})
+    }
+
     onCancel(): void {
         this.deleteMode = false;
     }
