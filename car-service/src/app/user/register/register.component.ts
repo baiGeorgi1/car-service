@@ -60,8 +60,6 @@ export class RegisterComponent {
             .register(userData)
             .subscribe({
                 next: (res) => {
-                    console.log("registered:", res);
-
                     this.userService.setUser(res);
                     this.router.navigate(["/catalog"]);
                 },
