@@ -53,7 +53,7 @@
                                                 </button>
                                                 <button
                                                     class="welcome-btn delete-btn"
-                                                    (click)="onDelete(car._id)"
+                                                    (click)="deleteMode = true"
                                                 >
                                                     delete car
                                                 </button>
@@ -99,10 +99,10 @@
                         (click)="onDelete(car._id)"
                         class="welcome-btn delete-btn"
                     >
-                        Изтрий
+                        Delete
                     </button>
                     <button (click)="onCancel()" class="welcome-btn">
-                        Назад
+                        Back
                     </button>
                 </div>
             </div>

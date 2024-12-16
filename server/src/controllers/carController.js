@@ -9,20 +9,20 @@ const { getErrorMessage } = require('../utils/errorHelper');
 router.get('/add', auth, isAuth, (req, res) => {
     res.render('car/add');
 });
-router.post('/add', auth, isAuth, async (req, res) => {
-    const { ...data } = req.body;
-    try {
-        await carManager.create({
-            ...data,
-            owner: req.user._id
-        });
+// router.post('/add', auth, isAuth, async (req, res) => {
+//     const { ...data } = req.body;
+//     try {
+//         await carManager.create({
+//             ...data,
+//             owner: req.user._id
+//         });
 
-        res.redirect('/catalog');
-    } catch (error) {
-        // res.render('cars/add', { data, error: getErrorMessage(error), });
-    }
+//         res.redirect('/catalog');
+//     } catch (error) {
+//         // res.render('cars/add', { data, error: getErrorMessage(error), });
+//     }
 
-});
+// });
 // router.get('/catalog/:carId', auth, async (req, res) => {
 //     console.log('VIEW CAR');
 
@@ -71,17 +71,17 @@ router.post('/edit/:carId', auth, isAuth, async (req, res) => {
         res.render(`car/edit`, { item, error: getErrorMessage(err), ...data });
     }
 });
-router.get('/delete/:carId', isAuth, async (req, res) => {
-    const id = req.params.carId;
-    const car = await carManagerManager.getById(id);
-    try {
-        await carManager.deleteItem(id);
-        res.redirect('/catalog');
-    } catch (err) {
-        res.render('car/details', { car, error: getErrorMessage(err) });
-    }
+// router.get('/delete/:carId', isAuth, async (req, res) => {
+//     const id = req.params.carId;
+//     const car = await carManagerManager.getById(id);
+//     try {
+//         await carManager.deleteItem(id);
+//         res.redirect('/catalog');
+//     } catch (err) {
+//         res.render('car/details', { car, error: getErrorMessage(err) });
+//     }
 
-});
+// });
 
 
 router.get('/buy/:carId', auth, isAuth, async (req, res) => {

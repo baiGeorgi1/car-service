@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { Subscription } from "rxjs";
 import { CarService } from "src/app/services/car.service";
@@ -28,6 +28,7 @@ export class ViewCarComponent implements OnInit {
         private location: Location,
         private userService: UserService,
         private carApi: CarService,
+        private router: Router,
         private activeRoute: ActivatedRoute,
     ) {}
     ngOnInit(): void {
@@ -47,8 +48,11 @@ export class ViewCarComponent implements OnInit {
         });
     }
     onDelete(carId: string) {
-        console.log("clicked");
-        this.deleteMode = true;
+        this.deleteMode = false;
+        this.subscribe$ = this.carApi.deleteCar(carId).subscribe({
+            error: (error) => (this.errorMsg = error.error.message),
+            complete: () => this.router.navigate(["catalog/my-cars"]),
+        });
     }
     onCancel(): void {
         this.deleteMode = false;

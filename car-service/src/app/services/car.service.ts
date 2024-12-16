@@ -12,9 +12,7 @@ export class CarService {
     constructor(private http: HttpClient) {}
 
     getCars(): Observable<Car[]> {
-        const api = environment.carApi;
-
-        return this.http.get<Car[]>(`${api}/catalog`).pipe(
+        return this.http.get<Car[]>(`${carApi}/catalog`).pipe(
             catchError((err) => {
                 console.error("Error fetching cars:", err);
                 return throwError(() => new Error("Failed to fetch cars"));
@@ -33,5 +31,9 @@ export class CarService {
                 "Content-Type": "application/json",
             },
         });
+    }
+
+    deleteCar(carId: string): Observable<Car> {
+        return this.http.get<Car>(`${carApi}/delete/${carId}`);
     }
 }

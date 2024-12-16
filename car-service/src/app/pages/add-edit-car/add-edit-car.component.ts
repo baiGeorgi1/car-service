@@ -75,7 +75,7 @@ export class AddEditCarComponent implements OnDestroy {
         this.subscribe$ = this.carService.addCar(this.carAdded).subscribe({
             next: () => {
                 this.form.reset();
-                this.router.navigate(["/catalog/my-cars"]);
+                this.router.navigate(["catalog/my-cars"]);
             },
             error: (err) => {
                 this.errorMsg = err.error.message;
