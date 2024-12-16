@@ -43,7 +43,6 @@ export class RegisterComponent {
         if (this.form.invalid) {
             return console.error("Form is invalid!");
         }
-        // console.log("Form submitted:", this.form.value);
         const {
             username,
             email,
@@ -55,7 +54,6 @@ export class RegisterComponent {
             password: password!,
             rePassword: rePassword!,
         };
-        // console.log("Form submitted:", userData);
         this.userService.userSubscription = this.userService
             .register(userData)
             .subscribe({
