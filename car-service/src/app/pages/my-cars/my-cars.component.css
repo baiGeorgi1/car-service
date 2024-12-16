@@ -6,3 +6,9 @@
 .featured-cars-content {
     padding-top: 96px;
 }
+.button img {
+    background-color: white;
+}
+.featured-model-info h3 {
+    text-align: center;
+}

@@ -18,6 +18,8 @@ registerLocaleData(localeBg);
     styleUrls: ["./car-info.component.css"],
 })
 export class CarInfoComponent {
-    isOwner!: boolean;
+    isUser!: boolean;
     @Input() cars: Car[] = [];
+
+    constructor() {}
 }

@@ -11,7 +11,9 @@ import { ContactsComponent } from "./contacts/contacts.component";
 import { ErrorComponent } from "../error/error.component";
 import { CarModule } from "../car/car.module";
 import { RouterModule } from "@angular/router";
-import { MyCarsComponent } from './my-cars/my-cars.component';
+import { MyCarsComponent } from "./my-cars/my-cars.component";
+import { AddEditCarComponent } from "./add-edit-car/add-edit-car.component";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
@@ -22,7 +24,15 @@ import { MyCarsComponent } from './my-cars/my-cars.component';
         ContactsComponent,
         ErrorComponent,
         MyCarsComponent,
+        AddEditCarComponent,
     ],
-    imports: [CommonModule, CoreModule, CarModule, PagesRoutingModule],
+
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        CoreModule,
+        CarModule,
+        PagesRoutingModule,
+    ],
 })
 export class PagesModule {}

@@ -6,7 +6,7 @@ const carSchema = new mongoose.Schema({
     model: {
         type: String,
         required: [true, 'Model is required!'],
-        minLength: [3, 'Model must be at least 2 characters!'],
+        minLength: [2, 'Model must be at least 2 characters!'],
 
     },
     type: {

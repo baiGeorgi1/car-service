@@ -26,4 +26,12 @@ export class CarService {
             params: { userId: userId },
         });
     }
+
+    addCar(data: Car): Observable<Car> {
+        return this.http.post<Car>(`${carApi}/catalog/add-car`, data, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+    }
 }

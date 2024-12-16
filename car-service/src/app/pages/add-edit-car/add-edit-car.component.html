@@ -1,0 +1,236 @@
+<ng-container>
+    <section id="addCar" class="addCar">
+        <div *ngIf="errorMsg" class="error-message">
+            <h3>
+                {{ errorMsg }}
+            </h3>
+        </div>
+        <form
+            [formGroup]="form"
+            (ngSubmit)="addCar()"
+            class="login-form fadeInDown animated"
+        >
+            <div class="flex-row">
+                <label class="lf--label" for="model">
+                    <p>model</p>
+                </label>
+                <input
+                    id="model"
+                    name="model"
+                    class="lf--input"
+                    placeholder="Car model"
+                    type="model"
+                    formControlName="model"
+                />
+            </div>
+            <ng-container *ngIf="form.get('model')?.touched">
+                <div
+                    *ngIf="form.get('model')?.errors?.['required']"
+                    class="error"
+                >
+                    <h3>Car model is required!</h3>
+                </div>
+                <div
+                    *ngIf="form.get('model')?.errors?.['pattern']"
+                    class="error"
+                >
+                    <h3>Car name pls - not numbers!</h3>
+                </div>
+                <div
+                    *ngIf="form.get('model')?.errors?.['minlength']"
+                    class="error"
+                >
+                    <h3>Not valid model!</h3>
+                </div>
+            </ng-container>
+            <div class="flex-row">
+                <label class="lf--label" for="type">
+                    <p>type</p>
+                </label>
+                <input
+                    id="type"
+                    name="type"
+                    class="lf--input"
+                    placeholder="Car type"
+                    type="type"
+                    formControlName="type"
+                />
+            </div>
+            <ng-container *ngIf="form.get('type')?.touched">
+                <div
+                    *ngIf="form.get('type')?.errors?.['required']"
+                    class="error"
+                >
+                    <h3>Car type is required!</h3>
+                </div>
+                <div
+                    *ngIf="form.get('type')?.errors?.['minlength']"
+                    class="error"
+                >
+                    <h3>Car type is too short!</h3>
+                </div>
+            </ng-container>
+            <div class="flex-row">
+                <label class="lf--label" for="transmission">
+                    <p>transmission</p>
+                </label>
+                <select
+                    id="transmission"
+                    name="transmission"
+                    class="lf--input"
+                    placeholder="Car transmission"
+                    type="transmission"
+                    formControlName="transmission"
+                >
+                    <option value="manual">Manual</option>
+                    <option value="automatic">Automatic</option>
+                </select>
+            </div>
+            <ng-container *ngIf="form.get('transmission')?.touched">
+                <div
+                    *ngIf="form.get('transmission')?.errors?.['required']"
+                    class="error"
+                >
+                    <h3>Car transmission is required!</h3>
+                </div>
+            </ng-container>
+            <div class="flex-row">
+                <label class="lf--label" for="price">
+                    <p>price</p>
+                </label>
+                <input
+                    id="price"
+                    name="price"
+                    class="lf--input"
+                    placeholder="Car price"
+                    type="price"
+                    formControlName="price"
+                />
+            </div>
+            <ng-container *ngIf="form.get('price')?.touched">
+                <div
+                    *ngIf="form.get('price')?.errors?.['required']"
+                    class="error"
+                >
+                    <h3>Car price is required!</h3>
+                </div>
+                <div
+                    *ngIf="form.get('price')?.errors?.['pattern']"
+                    class="error"
+                >
+                    <h3>Car price must be number!</h3>
+                </div>
+            </ng-container>
+            <div class="flex-row">
+                <label class="lf--label" for="hp">
+                    <p>hp</p>
+                </label>
+                <input
+                    id="hp"
+                    name="hp"
+                    class="lf--input"
+                    placeholder="Car hp"
+                    type="hp"
+                    formControlName="hp"
+                />
+            </div>
+            <ng-container *ngIf="form.get('hp')?.touched">
+                <div *ngIf="form.get('hp')?.errors?.['required']" class="error">
+                    <h3>Car hp is required!</h3>
+                </div>
+                <div *ngIf="form.get('hp')?.errors?.['pattern']" class="error">
+                    <h3>Horse power must be integer!</h3>
+                </div>
+            </ng-container>
+            <div class="flex-row">
+                <label class="lf--label" for="imageUrl">
+                    <p>imageUrl</p>
+                </label>
+                <input
+                    id="imageUrl"
+                    name="imageUrl"
+                    class="lf--input"
+                    placeholder="Car image"
+                    type="imageUrl"
+                    formControlName="imageUrl"
+                />
+            </div>
+            <ng-container *ngIf="form.get('imageUrl')?.touched">
+                <div
+                    *ngIf="form.get('imageUrl')?.errors?.['required']"
+                    class="error"
+                >
+                    <h3>Car image is required!</h3>
+                </div>
+            </ng-container>
+            <div class="flex-row">
+                <label class="lf--label" for="year">
+                    <p>year</p>
+                </label>
+                <input
+                    id="year"
+                    name="year"
+                    class="lf--input"
+                    placeholder="Car year"
+                    type="year"
+                    formControlName="year"
+                />
+            </div>
+            <ng-container *ngIf="form.get('year')?.touched">
+                <div
+                    *ngIf="form.get('year')?.errors?.['required']"
+                    class="error"
+                >
+                    <h3>Car year is required!</h3>
+                </div>
+                <div
+                    *ngIf="form.get('year')?.errors?.['pattern']"
+                    class="error"
+                >
+                    <h3>Year must be integer!</h3>
+                </div>
+                <div
+                    *ngIf="form.get('year')?.errors?.['min'] || form.get('year')?.errors?.['max']"
+                    class="error"
+                >
+                    <h3>The year must be between 1950 and 2024!</h3>
+                </div>
+            </ng-container>
+            <div class="flex-row">
+                <label class="lf--label" for="description">
+                    <p>description</p>
+                </label>
+                <input
+                    id="description"
+                    name="description"
+                    class="lf--input"
+                    placeholder="Car description"
+                    type="description"
+                    formControlName="description"
+                />
+            </div>
+            <ng-container *ngIf="form.get('description')?.touched">
+                <div
+                    *ngIf="form.get('description')?.errors?.['required']"
+                    class="error"
+                >
+                    <h3>Car description is required!</h3>
+                </div>
+                <div
+                    *ngIf="form.get('description')?.errors?.['minlength'] || form.get('description')?.errors?.['maxlength'] "
+                    class="error"
+                >
+                    <h3>Description must be between 10 and 200 characters!</h3>
+                </div>
+            </ng-container>
+
+            <button
+                class="lf--submit"
+                type="submit"
+                [ngClass]="{ 'disabled-btn': form.invalid }"
+            >
+                Add car
+            </button>
+        </form>
+    </section>
+</ng-container>
