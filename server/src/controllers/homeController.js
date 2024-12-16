@@ -40,7 +40,25 @@ router.get('/catalog/:carId', auth, async (req, res) => {
     }
 });
 
+router.post('/catalog/add-car', auth, async (req, res) => {
+    const { ...data } = req.body;
+    console.log('ADD car controller', { ...data });
 
+    try {
+        console.log('ADD car here');
+
+        const car = await carManager.create({
+            ...data,
+            // owner: req.user._id
+        });
+        res.json(car);
+
+        // res.redirect('/catalog');
+    } catch (error) {
+        // res.render('cars/add', { data, error: getErrorMessage(error), });
+    }
+
+});
 
 
 

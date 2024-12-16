@@ -10,6 +10,7 @@ import { Car } from "src/app/types/car";
 })
 export class MyCarsComponent implements OnInit {
     errorMsg!: string;
+
     myCars: Car[] = [];
 
     private get userId(): string {

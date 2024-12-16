@@ -3,9 +3,25 @@
         <div class="section-header">
             <h2>My cars for sale</h2>
         </div>
-
         <div class="featured-cars-content">
             <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="single-featured-cars">
+                        <div class="featured-img-box fixed">
+                            <div class="featured-cars-img">
+                                <button routerLink="/catalog/my-cars/add-car">
+                                    <img
+                                        src="../../../assets/images/add-btn.jpg"
+                                        alt="cars"
+                                    />
+                                </button>
+                            </div>
+                            <div class="featured-model-info">
+                                <h3>Add car</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <app-car-info [cars]="myCars" />
             </div>
         </div>

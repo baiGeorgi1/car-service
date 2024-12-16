@@ -23,30 +23,30 @@ router.post('/add', auth, isAuth, async (req, res) => {
     }
 
 });
-router.get('/catalog/:carId', auth, async (req, res) => {
-    console.log('VIEW CAR');
+// router.get('/catalog/:carId', auth, async (req, res) => {
+//     console.log('VIEW CAR');
 
-    const id = req.params.carId;
-    try {
-        const user = req.user?._id;
-        const item = await carManager.getById(id);
-        console.log(item);
-        const result = item.buyingList?.find((e) => e._id.toString() == user);
-        const isOwner = user == item.owner.toString();
-        if (isOwner) {
-            res.render('car/details', { item, isOwner });
-        } else {
-            const isBought = user == result?._id.toString();
-            console.log(isBought);
-            res.render('car/details', { item, isBought });
-        }
+//     const id = req.params.carId;
+//     try {
+//         const user = req.user?._id;
+//         const item = await carManager.getById(id);
+//         console.log(item);
+//         const result = item.buyingList?.find((e) => e._id.toString() == user);
+//         const isOwner = user == item.owner.toString();
+//         if (isOwner) {
+//             res.render('car/details', { item, isOwner });
+//         } else {
+//             const isBought = user == result?._id.toString();
+//             console.log(isBought);
+//             res.render('car/details', { item, isBought });
+//         }
 
-    } catch (err) {
-        const error = getErrorMessage(err);
-        const car = await carManager.getById(id);
-        res.render(`car/details`, { car, error });
-    }
-});
+//     } catch (err) {
+//         const error = getErrorMessage(err);
+//         const car = await carManager.getById(id);
+//         res.render(`car/details`, { car, error });
+//     }
+// });
 
 router.get('/edit/:carId', auth, isAuth, async (req, res) => {
     try {
