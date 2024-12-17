@@ -32,7 +32,7 @@ const carSchema = new mongoose.Schema({
             message: 'Horse power must be possitive number!'
         }
     },
-    // todo - naprawi go s dwa izbora!
+
     transmission: {
         type: String,
         required: [true, 'Transmission is required!'],

@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
 });
 router.get('/catalog', async (req, res) => {
     const cars = await carManager.getAll();
-    //todo remove row below if not works
     res.json(cars);
     // res.render('catalog', { cars });
 });
@@ -70,18 +69,33 @@ router.get('/delete/:carId', async (req, res) => {
     }
 
 });
+router.put('/edit/:carId', async (req, res) => {
+    const { ...data } = req.body;
+    const carId = req.params.carId;
+    try {
 
+        const edited = await carManager.edit(carId, data);
+        res.json(edited);
+        // res.redirect(`/car/details/${item}`);
 
-
-
-
-
-router.get('/search', isAuth, async (req, res) => {
-    const { name, type } = req.query;
-    const found = await carManager.getAll(name, type);
-    console.log(found);
-    res.render('search', { found });
+    } catch (err) {
+        const error = getErrorMessage(err);
+        res.status(500).json(error.error.message);
+        // res.render(`car/edit`, { item, error: getErrorMessage(err), ...data });
+    }
 });
+
+
+
+
+
+
+// router.get('/search', isAuth, async (req, res) => {
+//     const { name, type } = req.query;
+//     const found = await carManager.getAll(name, type);
+//     console.log(found);
+//     res.render('search', { found });
+// });
 router.get('/404', (req, res) => {
     res.render('404');
 

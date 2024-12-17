@@ -18,8 +18,9 @@ exports.deleteItem = async (id) => {
     await Car.findByIdAndDelete(id).lean();
 };
 exports.edit = async (id, data) => {
-    const result = await Car.findByIdAndUpdate(id, data);
-    return result.save();
+    const result = await Car.findByIdAndUpdate(id, data, { new: true });
+    result.save();
+    return result;
 
 };
 exports.buy = async (id, userId) => {
