@@ -8,7 +8,6 @@ import { CoreModule } from "./core/core.module";
 import { UserModule } from "./user/user.module";
 import { PagesModule } from "./pages/pages.module";
 import { HttpClientModule } from "@angular/common/http";
-import { TruncatePipe } from "./pipes/truncate.pipe";
 import { AppInterceptorProvider } from "./app.interceptor";
 
 @NgModule({

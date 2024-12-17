@@ -4,7 +4,7 @@ import { ErrorComponent } from "./error/error.component";
 
 const routes: Routes = [
     // { path: "/", pathMatch: "full", redirectTo: "/" },
-    { path: "404", component: ErrorComponent },
+    // { path: "404", component: ErrorComponent },
 ];
 
 @NgModule({
