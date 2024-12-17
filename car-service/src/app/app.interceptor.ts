@@ -13,8 +13,6 @@ import { environment } from "../environments/environment.development";
 const { userUrl } = environment;
 
 @Injectable()
-
-// todo add export if needed
 class AppInterceptor implements HttpInterceptor {
     API = "/users";
 

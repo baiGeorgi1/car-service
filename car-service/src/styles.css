@@ -112,15 +112,15 @@ html,
 body {
     height: 100%;
 }
-/* TODO - remove if works */
-/* [placeholder]:focus::-webkit-input-placeholder {
+
+[placeholder]:focus::-webkit-input-placeholder {
     -webkit-transition: opacity 0.3s 0.3s ease;
     -moz-transition: opacity 0.3s 0.3s ease;
     -ms-transition: opacity 0.3s 0.3s ease;
     -o-transition: opacity 0.3s 0.3s ease;
     transition: opacity 0.3s 0.3s ease;
     opacity: 0;
-} */
+}
 .owl-carousel {
     z-index: 0;
 }
