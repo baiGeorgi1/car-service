@@ -23,40 +23,58 @@ async function dbConnect() {
     const usersPath = path.resolve(__dirname, '../../data/car-shop.users.json');
     const carPath = path.resolve(__dirname, '../../data/car-shop.cars.json');
 
-    const userData = fs.readFileSync(usersPath, 'utf-8');
-    const carData = fs.readFileSync(carPath, 'utf-8');
+    try {
+        const userData = fs.readFileSync(usersPath, 'utf-8');
+        const carData = fs.readFileSync(carPath, 'utf-8');
 
-    const users = JSON.parse(userData);
-    const cars = JSON.parse(carData);
+        const users = JSON.parse(userData);
+        const cars = JSON.parse(carData);
+        // ** Import users **
 
-    // ** Import users **
-    const dataImport = async () => {
-        try {
-            const userExist = await User.countDocuments({});
-            const carExist = await Car.countDocuments({});
+        const dataImport = async () => {
+            try {
 
-            if (userExist === 0) {
-                console.log('Importing users ...');
-                const userObj = users.map(user => {
-                    if (user._id && typeof user._id === 'string') {
-                        user._id = mongoose.Types.ObjectId(user._id);
-                    }
-                    return user;
-                });
-                await User.insertMany(userObj);
-                console.log('Users imported! ');
+
+                const userExist = await User.countDocuments({});
+                const carExist = await Car.countDocuments({});
+
+                if (userExist === 0) {
+                    console.log('Importing users ...');
+                    const userObj = convertFields(users);
+                    await User.insertMany(userObj);
+                    console.log('Users imported! ');
+                }
+                if (carExist === 0) {
+                    console.log('Importing cars...');
+                    const carObj = convertFields(cars);
+                    await Car.insertMany(carObj);
+                    console.log('Cars imported successfully!');
+                }
+            } catch (error) {
+                console.error('Error during data import:', error);
             }
-            if (carExist === 0) {
-                console.log('Importing cars ...');
-                const carObj = cars.map(car => {
-                    return car;
-                });
-                await Car.insertMany(carObj);
+        };
+        await dataImport();
+
+    } catch (fileError) {
+        return console.log('Error reading JSON files:', fileError);
+
+
+    }
+
+    function convertFields(data) {
+        return data.map(doc => {
+            if (doc._id && typeof doc._id === 'object' && doc._id.$oid) {
+                doc._id = new mongoose.Types.ObjectId(doc._id.$oid);
             }
-        } catch (error) {
-            console.error('Error during data import:', err);
-        }
-    };
-    await dataImport();
+            if (doc.owner && typeof doc.owner === 'object' && doc.owner.$oid) {
+                doc.owner = new mongoose.Types.ObjectId(doc.owner.$oid);
+            }
+            return doc;
+        });
+    }
+
+
+
 }
 module.exports = dbConnect;
