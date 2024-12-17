@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, DoCheck, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { Subscription } from "rxjs";
@@ -33,7 +33,7 @@ export class ViewCarComponent implements OnInit {
     ) {}
     ngOnInit(): void {
         this.activeRoute.params.subscribe((data) => {
-            this.carId = data["car-details"];
+            this.carId = data["carId"];
             this.subscribe$ = this.carApi
                 .getCar(this.carId, this.userId)
                 .subscribe({
@@ -47,6 +47,7 @@ export class ViewCarComponent implements OnInit {
                 });
         });
     }
+
     onDelete(carId: string) {
         this.deleteMode = false;
         this.subscribe$ = this.carApi.deleteCar(carId).subscribe({
@@ -54,6 +55,11 @@ export class ViewCarComponent implements OnInit {
             complete: () => this.router.navigate(["catalog/my-cars"]),
         });
     }
+
+    onEdit(): void {
+        this.router.navigate([`/catalog/my-cars/edit-car/${this.carId}`]);
+    }
+
     onCancel(): void {
         this.deleteMode = false;
     }

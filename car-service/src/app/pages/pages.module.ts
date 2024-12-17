@@ -8,12 +8,12 @@ import { CatalogComponent } from "./catalog/catalog.component";
 import { PagesRoutingModule } from "./pages-routing.module";
 import { CoreModule } from "../core/core.module";
 import { ContactsComponent } from "./contacts/contacts.component";
-import { ErrorComponent } from "../error/error.component";
 import { CarModule } from "../car/car.module";
 
 import { MyCarsComponent } from "./my-cars/my-cars.component";
 import { AddEditCarComponent } from "./add-edit-car/add-edit-car.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { ErrorPageComponent } from "./error-page/error-page.component";
 
 @NgModule({
     declarations: [
@@ -22,9 +22,9 @@ import { ReactiveFormsModule } from "@angular/forms";
         ViewCarComponent,
         CatalogComponent,
         ContactsComponent,
-        ErrorComponent,
         MyCarsComponent,
         AddEditCarComponent,
+        ErrorPageComponent,
     ],
 
     imports: [

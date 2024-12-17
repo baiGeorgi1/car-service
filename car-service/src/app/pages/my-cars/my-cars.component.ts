@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { Subscription } from "rxjs";
 import { CarService } from "src/app/services/car.service";
 import { UserService } from "src/app/services/user.service";
 import { Car } from "src/app/types/car";
@@ -8,8 +10,9 @@ import { Car } from "src/app/types/car";
     templateUrl: "./my-cars.component.html",
     styleUrls: ["./my-cars.component.css"],
 })
-export class MyCarsComponent implements OnInit {
+export class MyCarsComponent implements OnInit, OnDestroy {
     errorMsg!: string;
+    subscribe$!: Subscription;
 
     myCars: Car[] = [];
 
@@ -17,7 +20,11 @@ export class MyCarsComponent implements OnInit {
         return this.userHttp.getUser()!._id;
     }
 
-    constructor(private carApi: CarService, private userHttp: UserService) {}
+    constructor(
+        private carApi: CarService,
+        private userHttp: UserService,
+        private router: Router,
+    ) {}
     ngOnInit(): void {
         this.carApi.getCars().subscribe({
             next: (cars) => {
@@ -32,5 +39,14 @@ export class MyCarsComponent implements OnInit {
                 this.errorMsg = err.error.message;
             },
         });
+    }
+    addCar(): void {
+        this.router.navigate(["/catalog/my-cars/add-car"]);
+    }
+
+    ngOnDestroy(): void {
+        if (this.subscribe$!) {
+            this.subscribe$.unsubscribe();
+        }
     }
 }

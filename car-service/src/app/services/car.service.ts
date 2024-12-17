@@ -32,6 +32,13 @@ export class CarService {
             },
         });
     }
+    editCar(data: Car, carId: string): Observable<Car> {
+        return this.http.put<Car>(`${carApi}/edit/${carId}`, data, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+    }
 
     deleteCar(carId: string): Observable<Car> {
         return this.http.get<Car>(`${carApi}/delete/${carId}`);

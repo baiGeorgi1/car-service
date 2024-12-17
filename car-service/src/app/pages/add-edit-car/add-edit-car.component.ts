@@ -1,6 +1,6 @@
-import { Component, OnDestroy } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { CarService } from "src/app/services/car.service";
 import { UserService } from "src/app/services/user.service";
@@ -11,12 +11,13 @@ import { Car } from "src/app/types/car";
     templateUrl: "./add-edit-car.component.html",
     styleUrls: ["./add-edit-car.component.css"],
 })
-export class AddEditCarComponent implements OnDestroy {
+export class AddEditCarComponent implements OnInit, OnDestroy {
     carAdded = {} as Car;
     editMode: boolean = false;
-    addMode: boolean = false;
+    addMode: boolean = true;
     subscribe$!: Subscription;
     errorMsg!: string;
+    carId: string = "";
 
     form = this.fb.group({
         model: [
@@ -59,9 +60,37 @@ export class AddEditCarComponent implements OnDestroy {
         private carService: CarService,
         private fb: FormBuilder,
         private router: Router,
+        private activeRoute: ActivatedRoute,
     ) {}
     public get userId(): string {
         return this.userService.getUser()._id;
+    }
+    ngOnInit(): void {
+        if (
+            this.activeRoute.snapshot.url.some((segment) =>
+                segment.path.includes("edit-car"),
+            )
+        ) {
+            this.activeRoute.params.subscribe((params) => {
+                this.carId = params["carId"];
+                this.addMode = false;
+                this.subscribe$ = this.carService
+                    .getCar(this.carId, this.userId)
+                    .subscribe({
+                        next: (car) => {
+                            // console.log(car);
+                            this.carAdded = car;
+                            this.form.patchValue(Object(this.carAdded));
+                        },
+                        error: (err) => {
+                            this.errorMsg = err.error.message;
+                        },
+                    });
+                this.editMode = true;
+            });
+        } else {
+            this.addMode = true;
+        }
     }
 
     addCar(): void {
@@ -81,6 +110,26 @@ export class AddEditCarComponent implements OnDestroy {
                 this.errorMsg = err.error.message;
             },
         });
+    }
+    editCar() {
+        if (this.form.invalid) {
+            return;
+        }
+        Object.assign(this.carAdded, this.form.value);
+        this.carAdded.owner = this.userId;
+        this.subscribe$ = this.carService
+            .editCar(this.carAdded, this.carId)
+            .subscribe({
+                next: (edited) => {
+                    this.carId = edited._id;
+                },
+
+                error: (err) => (this.errorMsg = err.error.message),
+                complete: () => {
+                    this.router.navigate([`/catalog/${this.carId}`]);
+                    this.editMode = false;
+                },
+            });
     }
 
     ngOnDestroy(): void {
