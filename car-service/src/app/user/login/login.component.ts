@@ -4,6 +4,8 @@ import { FormBuilder, Validators } from "@angular/forms";
 
 import { emailValidator } from "src/app/utils/email-validator";
 import { UserService } from "../../services/user.service";
+import { ErrorService } from "src/app/core/error/error.service";
+import { Observable } from "rxjs";
 
 @Component({
     selector: "app-login",
@@ -11,7 +13,7 @@ import { UserService } from "../../services/user.service";
     styleUrls: ["./login.component.css"],
 })
 export class LoginComponent {
-    errorMsg!: string;
+    errorMsg: string = "";
 
     form = this.fb.group({
         email: ["", [Validators.required, emailValidator()]],
@@ -19,6 +21,7 @@ export class LoginComponent {
     });
 
     constructor(
+        private errorService: ErrorService,
         private userService: UserService,
         private fb: FormBuilder,
         private router: Router,
@@ -34,10 +37,15 @@ export class LoginComponent {
             .login(email!, password!)
             .subscribe({
                 next: (userData) => {
-                    this.userService.setUser(userData);
-                    this.router.navigate(["/"]);
+                    if (userData) {
+                        this.userService.setUser(userData);
+                        this.router.navigate(["/"]);
+                    }
                 },
-                error: (err) => (this.errorMsg = err.error.message),
+                error: () => {
+                    const error = this.errorService.getError();
+                    this.errorMsg = error.error;
+                },
             });
     }
 }

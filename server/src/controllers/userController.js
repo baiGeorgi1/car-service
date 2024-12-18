@@ -17,7 +17,9 @@ router.post('/login', async (req, res) => {
         // res.cookie(TOKEN_KEY, token);
         //   res.redirect('/');
     } catch (err) {
-        res.render('users/login', { error: getErrorMessage(err) });
+        err = 'wrong username or password';
+        res.status(400).json(err);
+        //  res.render('users/login', { error: getErrorMessage(err) });
     }
 
 });
