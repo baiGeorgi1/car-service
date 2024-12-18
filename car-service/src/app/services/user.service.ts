@@ -71,6 +71,12 @@ export class UserService implements OnDestroy {
             .pipe(tap((user) => this.user$$.next(user)));
     }
 
+    getOwner(ownerId: string) {
+        return this.http.get<User>(`${userUrl}/owner`, {
+            headers: { ownerId: ownerId },
+        });
+    }
+
     setUser(data: any): void {
         localStorage.setItem(environment.USER_KEY, JSON.stringify(data));
     }

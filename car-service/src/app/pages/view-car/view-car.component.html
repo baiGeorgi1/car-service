@@ -13,8 +13,10 @@
                             <div class="row">
                                 <div class="col-md-3 col-sm-12">
                                     <div class="new-cars-img">
-                                        <img src="{{ car.imageUrl }}"
-                                            alt="img" />
+                                        <img
+                                            src="{{ car.imageUrl }}"
+                                            alt="img"
+                                        />
                                     </div>
                                     <!-- /.new-cars-img -->
                                 </div>
@@ -25,7 +27,7 @@
                                                 <p>Description:</p>
                                                 <span>{{
                                                     car.description
-                                                    }}</span>
+                                                }}</span>
                                             </div>
                                             <div class="car-detail">
                                                 <p>Year:</p>
@@ -41,42 +43,61 @@
 
                                                 <span>{{
                                                     car.transmission
-                                                    }}</span>
+                                                }}</span>
                                             </div>
                                             <div class="car-detail">
                                                 <p>Price:</p>
-                                                <span>${{ car.price | number :
-                                                    "1.0-0" }}</span>
+                                                <span
+                                                    >${{
+                                                        car.price
+                                                            | number : "1.0-0"
+                                                    }}</span
+                                                >
                                             </div>
-                                            <div class="car-detail">
+                                            <div
+                                                class="car-detail"
+                                                *ngIf="!isOwner"
+                                            >
                                                 <p>Owner:</p>
 
-                                                <span>TODO</span>
+                                                <span>
+                                                    {{ ownerInfo.username }} -
+                                                    {{ ownerInfo.email }}
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="buttons">
                                             <ng-container *ngIf="isOwner">
-                                                <button class="welcome-btn"
-                                                    (click)="onEdit()">
+                                                <button
+                                                    class="welcome-btn"
+                                                    (click)="onEdit()"
+                                                >
                                                     edit car
                                                 </button>
-                                                <button class="welcome-btn"
-                                                    (click)="goBack()">
+                                                <button
+                                                    class="welcome-btn"
+                                                    (click)="goBack()"
+                                                >
                                                     back
                                                 </button>
                                                 <button
                                                     class="welcome-btn delete-btn"
-                                                    (click)="deleteMode = true">
+                                                    (click)="deleteMode = true"
+                                                >
                                                     delete car
                                                 </button>
                                             </ng-container>
                                             <ng-container *ngIf="!isOwner">
-                                                <button class="welcome-btn"
-                                                    onclick="window.location.href='#'">
+                                                <button
+                                                    class="welcome-btn"
+                                                    (click)="contact()"
+                                                >
                                                     contact seller
                                                 </button>
-                                                <button class="welcome-btn"
-                                                    (click)="goBack()">
+                                                <button
+                                                    class="welcome-btn"
+                                                    (click)="goBack()"
+                                                >
                                                     back
                                                 </button>
                                             </ng-container>
@@ -103,8 +124,10 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <button (click)="onDelete(car._id)"
-                        class="welcome-btn delete-btn">
+                    <button
+                        (click)="onDelete(car._id)"
+                        class="welcome-btn delete-btn"
+                    >
                         Delete
                     </button>
                     <button (click)="onCancel()" class="welcome-btn">

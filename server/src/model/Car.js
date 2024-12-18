@@ -64,7 +64,7 @@ const carSchema = new mongoose.Schema({
     }],
 
     owner: {
-        type: mongoose.Types.ObjectId,
+        type: String,
         ref: 'User'
     }
 });

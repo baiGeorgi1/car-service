@@ -9,7 +9,7 @@ export interface Car {
     price: number;
     description: string;
     buyingList: [];
-    owner: {};
+    owner: string;
     // {
     //     "_id": "6731cb561814a623800eb963",
     //     "email": "gogo@abv.bg",

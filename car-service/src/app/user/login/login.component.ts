@@ -11,7 +11,6 @@ import { UserService } from "../../services/user.service";
     styleUrls: ["./login.component.css"],
 })
 export class LoginComponent {
-    // TODO - erroMSG
     errorMsg!: string;
 
     form = this.fb.group({

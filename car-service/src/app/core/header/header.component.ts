@@ -14,7 +14,6 @@ export class HeaderComponent {
         return this.userService.isLogged;
     }
 
-    // todo make getter for username
     get username(): string {
         return this.userService.getUser()?.username || "";
     }

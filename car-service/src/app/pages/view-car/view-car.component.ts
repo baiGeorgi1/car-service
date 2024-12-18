@@ -1,22 +1,26 @@
-import { Component, DoCheck, OnInit } from "@angular/core";
+import { Component, DoCheck, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Location } from "@angular/common";
 import { Subscription } from "rxjs";
 import { CarService } from "src/app/services/car.service";
 import { UserService } from "src/app/services/user.service";
 import { Car } from "src/app/types/car";
+import { User } from "src/app/types/user";
 
 @Component({
     selector: "app-newest-cars",
     templateUrl: "./view-car.component.html",
     styleUrls: ["./view-car.component.css"],
 })
-export class ViewCarComponent implements OnInit {
+export class ViewCarComponent implements OnInit, OnDestroy {
     subscribe$!: Subscription;
+    ownerSubs$!: Subscription;
+
     isOwner!: boolean;
     deleteMode: boolean = false;
 
     errorMsg!: string;
+    ownerInfo = {} as User;
     car = {} as Car;
     carId: string = "";
 
@@ -42,6 +46,17 @@ export class ViewCarComponent implements OnInit {
                             this.isOwner = true;
                         }
                         this.car = car;
+
+                        const owner$ = this.userService.getOwner(car.owner);
+                        this.ownerSubs$ = owner$.subscribe({
+                            next: (owner) => {
+                                // console.log(owner);
+                                this.ownerInfo = owner;
+                            },
+                            error: (err) => {
+                                this.errorMsg = err.error.message;
+                            },
+                        });
                     },
                     error: (err) => (this.errorMsg = err.error.message),
                 });
@@ -65,5 +80,16 @@ export class ViewCarComponent implements OnInit {
     }
     goBack(): void {
         this.location.back();
+    }
+    contact(): void {
+        if (this.ownerInfo.email) {
+            window.location.href = `mailto:${this.ownerInfo.email}`;
+        } else {
+            console.error("Email address is not available.");
+        }
+    }
+    ngOnDestroy(): void {
+        if (this.subscribe$) this.subscribe$.unsubscribe();
+        if (this.ownerSubs$) this.ownerSubs$.unsubscribe();
     }
 }

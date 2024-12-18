@@ -44,3 +44,4 @@ async function generateToken(user) {
     const token = jwt.sign(payload, SECRET, { expiresIn: '2h' });
     return token;
 }
+exports.getOwner = async (ownerId) => await User.findById(ownerId).lean();

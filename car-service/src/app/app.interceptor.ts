@@ -20,7 +20,7 @@ class AppInterceptor implements HttpInterceptor {
         req: HttpRequest<any>,
         next: HttpHandler,
     ): Observable<HttpEvent<any>> {
-        console.log(req);
+        // console.log(req);
 
         if (req.url.startsWith(this.API)) {
             req = req.clone({

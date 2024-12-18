@@ -21,9 +21,15 @@ router.post('/login', async (req, res) => {
     }
 
 });
-// router.get('/register', async (req, res) => {
-//     res.render('users/register');
-// });
+router.get('/owner', async (req, res) => {
+    const ownerId = req.headers.ownerid;
+    const owner = await userManager.getOwner(ownerId);
+
+    res.json(owner);
+
+
+    // res.render('users/register');
+});
 // !! TEST
 router.post('/register', async (req, res) => {
     const { email, username, password, rePassword } = req.body;
