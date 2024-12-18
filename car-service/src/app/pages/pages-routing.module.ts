@@ -8,19 +8,44 @@ import { ContactsComponent } from "./contacts/contacts.component";
 import { MyCarsComponent } from "./my-cars/my-cars.component";
 import { AddEditCarComponent } from "./add-edit-car/add-edit-car.component";
 import { ErrorPageComponent } from "./error-page/error-page.component";
+import { IsUserActivated } from "../guards/isUser.activate";
+import { IsGuestActivated } from "../guards/isGuest.activate";
 
 const routes: Routes = [
-    { path: "", component: HomeComponent },
-    { path: "catalog", component: CatalogComponent },
-    { path: "catalog/my-cars", component: MyCarsComponent },
-    { path: "catalog/my-cars/add-car", component: AddEditCarComponent },
-    { path: "catalog/my-cars/edit-car/:carId", component: AddEditCarComponent },
-    { path: "catalog/:carId", component: ViewCarComponent },
-    { path: "service", component: ServiceComponent },
+    {
+        path: "catalog",
+        canActivate: [IsUserActivated],
+        component: CatalogComponent,
+    },
+    {
+        path: "catalog/my-cars",
+        canActivate: [IsUserActivated],
+        component: MyCarsComponent,
+    },
+    {
+        path: "catalog/my-cars/add-car",
+        canActivate: [IsUserActivated],
+        component: AddEditCarComponent,
+    },
+    {
+        path: "catalog/my-cars/edit-car/:carId",
+        canActivate: [IsUserActivated],
+        component: AddEditCarComponent,
+    },
+    {
+        path: "catalog/:carId",
+        canActivate: [IsUserActivated],
+        component: ViewCarComponent,
+    },
+    {
+        path: "service",
+        canActivate: [IsGuestActivated],
+        component: ServiceComponent,
+    },
     { path: "contacts", component: ContactsComponent },
     // { path: "new-cars", component: ViewCarComponent },
     { path: "404", component: ErrorPageComponent },
-    { path: "**", redirectTo: "/404" },
+    { path: "catalog/**", redirectTo: "/404", pathMatch: "full" },
 ];
 
 @NgModule({

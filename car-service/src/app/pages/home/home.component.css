@@ -2,8 +2,10 @@
     position: relative;
     background: url(../../../assets/images/welcome-hero/welcome-banner.jpg)
         no-repeat;
+    margin-top: -31px;
     background-position: center;
     background-size: cover;
+    min-height: 100vh;
     z-index: 0;
 }
 .welcome-hero:before {
